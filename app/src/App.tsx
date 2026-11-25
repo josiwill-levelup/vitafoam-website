@@ -10,6 +10,7 @@ import ShopByCategory from '@/sections/ShopByCategory'
 import TrustFeatures from '@/sections/TrustFeatures'
 import FeaturedProducts from '@/sections/FeaturedProducts'
 import WhatsAppBanner from '@/sections/WhatsAppBanner'
+import ChristmasCampaign from '@/sections/ChristmasCampaign'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -41,6 +42,7 @@ export default function App() {
       <Navbar />
       <main>
         <HeroSection />
+        <ChristmasCampaign />
         <ShopByCategory />
         <TrustFeatures />
         <FeaturedProducts />
