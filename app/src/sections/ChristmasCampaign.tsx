@@ -17,7 +17,7 @@ export default function ChristmasCampaign() {
     'Size / specification: ' + (size.trim() || 'Please advise'),
     'Quantity: ' + quantity,
     recipient,
-    'Please confirm availability, selling price, payment options and delivery or collection arrangements.',
+    'Please confirm stock, total price and delivery or collection. I will arrange payment directly with your team.',
   ].join('\n')
   const whatsapp = 'https://wa.me/23276271771?text=' + encodeURIComponent(message)
 
@@ -52,7 +52,7 @@ export default function ChristmasCampaign() {
               window.location.assign(whatsapp)
             }}>
               <h3 className="text-xl font-bold">Start your Christmas order</h3>
-              <p className="mt-2 text-sm text-gray-600">Send a request to our team. No payment is taken on this website.</p>
+              <p className="mt-2 text-sm text-gray-600">Complete your order request below, then send it to our team on WhatsApp. We will confirm your order and arrange payment directly with you.</p>
               <div className="mt-5 grid gap-4">
                 <label className="grid gap-1 text-sm font-semibold">Product
                   <select value={product} onChange={(event) => setProduct(event.target.value)} className="w-full rounded-lg border border-gray-300 bg-white p-3 text-base font-normal">
@@ -73,9 +73,9 @@ export default function ChristmasCampaign() {
                   </select>
                 </label>
                 <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#08783E] px-4 py-3 font-semibold text-white hover:bg-[#065F32] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-                  <MessageCircle size={20} aria-hidden="true" /> Send request via WhatsApp
+                  <MessageCircle size={20} aria-hidden="true" /> Order via WhatsApp
                 </button>
-                <p className="text-xs leading-relaxed text-gray-600">Prices, stock, promotions, payment and delivery charges are confirmed by our team before you place your order. WhatsApp: 076 271 771.</p>
+                <p className="text-xs leading-relaxed text-gray-600">WhatsApp will open with your order details. Tap Send to reach our team. No online checkout or automatic payment is required. Your order is confirmed only after our team agrees the price, availability, payment and delivery or collection. WhatsApp: 076 271 771.</p>
               </div>
             </form>
           </div>
