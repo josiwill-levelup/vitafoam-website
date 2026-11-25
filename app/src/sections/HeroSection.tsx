@@ -136,8 +136,8 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <div ref={ctaRef} className="flex flex-wrap gap-4 mb-10 opacity-0">
-              <a href="#category" className="btn-primary">
-                SHOP MATTRESSES
+              <a href="#christmas" className="btn-primary">
+                CHRISTMAS COMFORT
                 <ArrowRight size={18} />
               </a>
               <a
