@@ -7,12 +7,17 @@ const collections = [
 ]
 
 export default function ChristmasCampaign() {
-  const [product, setProduct] = useState(collections[0])
+  const [product, setProduct] = useState('Help me choose')
   const [size, setSize] = useState('')
   const [quantity, setQuantity] = useState(1)
   const [recipient, setRecipient] = useState('Shopping for myself / my household')
+  const choose = (item: string, audience: string) => {
+    setProduct(item)
+    setRecipient(audience)
+    document.getElementById('christmas-order')?.scrollIntoView({ block: 'start' })
+  }
   const message = [
-    'Hello Vitafoam Brookfields! I am enquiring through the Christmas Comfort website campaign (XMAS26).',
+    'Hello Vitafoam Brookfields! I am enquiring through the Christmas Comfort — Send Love Back Home campaign (XMAS26).',
     'Product: ' + product,
     'Size / specification: ' + (size.trim() || 'Please advise'),
     'Quantity: ' + quantity,
@@ -33,21 +38,27 @@ export default function ChristmasCampaign() {
               <h2 id="christmas-title" className="mt-4 font-display text-4xl sm:text-5xl leading-tight">
                 Christmas Comfort
               </h2>
-              <p className="mt-4 text-xl font-medium text-[#FFD6A5]">Give the gift of comfort this Christmas.</p>
+              <p className="mt-4 text-xl font-medium text-[#FFD6A5]">Send love back home. Give the gift of comfort.</p>
               <p className="mt-4 text-white/90 leading-relaxed">
-                Shop from home in Sierra Leone, or arrange a gift for your loved ones back home.
-                Tell us what you need and our Brookfields team will help you choose.
+                A better night's sleep is a gift that lasts beyond Christmas. Whether you are in Freetown or living abroad, choose genuine Vitafoam products and arrange your order with our Brookfields team on WhatsApp.
               </p>
-              <div className="mt-6 space-y-3 text-sm text-white/90">
-                <p><strong>For your home:</strong> mattresses, pillows and bedding.</p>
-                <p><strong>For family overseas or back home:</strong> arrange a gift for delivery in Sierra Leone.</p>
-                <p><strong>For carpenters:</strong> ask about current sheeting and cushion offers.</p>
+              <div className="mt-6 grid gap-3">
+                {[
+                  { title: 'Give your home a comfort upgrade', detail: 'Explore mattresses, pillows and bedding.', item: 'Help me choose', audience: 'Shopping for myself / my household' },
+                  { title: 'Send a gift back home', detail: 'Order from abroad for loved ones in Sierra Leone.', item: 'Help me choose', audience: 'Buying a gift for someone in Sierra Leone' },
+                  { title: 'Christmas for carpenters', detail: 'Ask about seasonal sheeting and cushion offers.', item: 'Sheetings and cushions', audience: 'Buying for my carpentry or upholstery business' },
+                ].map((option) => (
+                  <button key={option.title} type="button" onClick={() => choose(option.item, option.audience)} className="flex items-center justify-between gap-3 rounded-xl border border-white/30 bg-white/10 p-4 text-left hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                    <span><strong className="block">{option.title}</strong><span className="mt-1 block text-sm text-white/90">{option.detail}</span></span>
+                    <ArrowRight size={18} className="shrink-0" aria-hidden="true" />
+                  </button>
+                ))}
               </div>
               <a href="#category" className="mt-6 inline-flex items-center gap-2 font-semibold text-[#FFD6A5] underline underline-offset-4">
                 Browse our usual categories <ArrowRight size={16} aria-hidden="true" />
               </a>
             </div>
-            <form className="rounded-2xl bg-white p-5 sm:p-7 text-[#2D1B69]" onSubmit={(event) => {
+            <form id="christmas-order" className="scroll-mt-24 rounded-2xl bg-white p-5 sm:p-7 text-[#2D1B69]" onSubmit={(event) => {
               event.preventDefault()
               window.location.assign(whatsapp)
             }}>
